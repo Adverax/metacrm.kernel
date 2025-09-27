@@ -32,7 +32,7 @@ const (
 	DateTimeFormat = "2006-01-02 15:04:05"
 )
 
-func ConvertToString(val interface{}) (res string, valid bool) {
+func ToString(val interface{}) (res string, valid bool) {
 	switch v := val.(type) {
 	case string:
 		return v, true
@@ -85,7 +85,7 @@ func ConvertToString(val interface{}) (res string, valid bool) {
 	}
 }
 
-func ConvertToTime(val interface{}) (res time.Time, valid bool) {
+func ToTime(val interface{}) (res time.Time, valid bool) {
 	switch v := val.(type) {
 	case string:
 		val, err := time.ParseInLocation(DateTimeFormat, v, time.UTC)
@@ -113,7 +113,7 @@ func ConvertToTime(val interface{}) (res time.Time, valid bool) {
 	}
 }
 
-func ConvertToInt(val interface{}) (res int, valid bool) {
+func ToInt(val interface{}) (res int, valid bool) {
 	switch v := val.(type) {
 	case int8:
 		return int(v), true
@@ -170,7 +170,7 @@ func ConvertToInt(val interface{}) (res int, valid bool) {
 	}
 }
 
-func ConvertToInt8(val interface{}) (res int8, valid bool) {
+func ToInt8(val interface{}) (res int8, valid bool) {
 	switch v := val.(type) {
 	case int8:
 		return int8(v), true
@@ -227,7 +227,7 @@ func ConvertToInt8(val interface{}) (res int8, valid bool) {
 	}
 }
 
-func ConvertToInt16(val interface{}) (res int16, valid bool) {
+func ToInt16(val interface{}) (res int16, valid bool) {
 	switch v := val.(type) {
 	case int8:
 		return int16(v), true
@@ -284,7 +284,7 @@ func ConvertToInt16(val interface{}) (res int16, valid bool) {
 	}
 }
 
-func ConvertToInt32(val interface{}) (res int32, valid bool) {
+func ToInt32(val interface{}) (res int32, valid bool) {
 	switch v := val.(type) {
 	case int8:
 		return int32(v), true
@@ -341,7 +341,7 @@ func ConvertToInt32(val interface{}) (res int32, valid bool) {
 	}
 }
 
-func ConvertToInt64(val interface{}) (res int64, valid bool) {
+func ToInt64(val interface{}) (res int64, valid bool) {
 	switch v := val.(type) {
 	case int8:
 		return int64(v), true
@@ -400,7 +400,7 @@ func ConvertToInt64(val interface{}) (res int64, valid bool) {
 	}
 }
 
-func ConvertToUint(val interface{}) (res uint, valid bool) {
+func ToUint(val interface{}) (res uint, valid bool) {
 	switch v := val.(type) {
 	case int8:
 		return uint(v), true
@@ -457,7 +457,7 @@ func ConvertToUint(val interface{}) (res uint, valid bool) {
 	}
 }
 
-func ConvertToUint8(val interface{}) (res uint8, valid bool) {
+func ToUint8(val interface{}) (res uint8, valid bool) {
 	switch v := val.(type) {
 	case int8:
 		return uint8(v), true
@@ -514,7 +514,7 @@ func ConvertToUint8(val interface{}) (res uint8, valid bool) {
 	}
 }
 
-func ConvertToUint16(val interface{}) (res uint16, valid bool) {
+func ToUint16(val interface{}) (res uint16, valid bool) {
 	switch v := val.(type) {
 	case int8:
 		return uint16(v), true
@@ -571,7 +571,7 @@ func ConvertToUint16(val interface{}) (res uint16, valid bool) {
 	}
 }
 
-func ConvertToUint32(val interface{}) (res uint32, valid bool) {
+func ToUint32(val interface{}) (res uint32, valid bool) {
 	switch v := val.(type) {
 	case int8:
 		return uint32(v), true
@@ -628,7 +628,7 @@ func ConvertToUint32(val interface{}) (res uint32, valid bool) {
 	}
 }
 
-func ConvertToUint64(val interface{}) (res uint64, valid bool) {
+func ToUint64(val interface{}) (res uint64, valid bool) {
 	switch v := val.(type) {
 	case int8:
 		return uint64(v), true
@@ -687,7 +687,7 @@ func ConvertToUint64(val interface{}) (res uint64, valid bool) {
 	}
 }
 
-func ConvertToFloat32(val interface{}) (res float32, valid bool) {
+func ToFloat32(val interface{}) (res float32, valid bool) {
 	switch v := val.(type) {
 	case int8:
 		return float32(v), true
@@ -744,7 +744,7 @@ func ConvertToFloat32(val interface{}) (res float32, valid bool) {
 	}
 }
 
-func ConvertToFloat64(val interface{}) (res float64, valid bool) {
+func ToFloat64(val interface{}) (res float64, valid bool) {
 	switch v := val.(type) {
 	case int8:
 		return float64(v), true
@@ -801,7 +801,7 @@ func ConvertToFloat64(val interface{}) (res float64, valid bool) {
 	}
 }
 
-func ConvertToBoolean(val interface{}) (res bool, valid bool) {
+func ToBoolean(val interface{}) (res bool, valid bool) {
 	switch v := val.(type) {
 	case int8:
 		return v != 0, true
@@ -844,7 +844,7 @@ func ConvertToBoolean(val interface{}) (res bool, valid bool) {
 	}
 }
 
-func ConvertToDuration(val interface{}) (res time.Duration, valid bool) {
+func ToDuration(val interface{}) (res time.Duration, valid bool) {
 	switch v := val.(type) {
 	case int8:
 		return time.Duration(v), true
@@ -890,7 +890,7 @@ func ConvertToDuration(val interface{}) (res time.Duration, valid bool) {
 	}
 }
 
-func ConvertToJson(val interface{}) (res json.RawMessage, valid bool) {
+func ToJson(val interface{}) (res json.RawMessage, valid bool) {
 	switch v := val.(type) {
 	case int8:
 		return json.RawMessage(fmt.Sprintf("%v", v)), true
@@ -961,7 +961,7 @@ func Register(tp reflect.Type, fn func(value interface{}) (reflect.Value, bool))
 	converters[tp] = fn
 }
 
-func ConvertTo(value interface{}, to reflect.Type) (reflect.Value, bool) {
+func To(value interface{}, to reflect.Type) (reflect.Value, bool) {
 	if value == nil {
 		return reflect.Value{}, false
 	}

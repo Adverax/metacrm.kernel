@@ -1,8 +1,8 @@
 package yamlConfig
 
 import (
-	"github.com/adverax/kernel/library/access/fetchers/maps/yaml"
-	"github.com/adverax/kernel/library/configs"
+	"github.com/adverax/metacrm.kernel/access/fetchers/maps/yaml"
+	"github.com/adverax/metacrm.kernel/configs"
 )
 
 type Source struct {

@@ -91,7 +91,7 @@ func Assign(ctx context.Context, dst interface{}, src map[string]interface{}) er
 					}
 				}
 			default:
-				if v, ok := convert.ConvertTo(value, field.Type()); ok {
+				if v, ok := convert.To(value, field.Type()); ok {
 					field.Set(v)
 				}
 			}
