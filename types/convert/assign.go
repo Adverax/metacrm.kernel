@@ -8,7 +8,7 @@ import (
 	"time"
 )
 
-// Scanner is data scanner (see standard package database/sql)
+// Data scanner (see standard package database/sql)
 type Scanner interface {
 	Scan(src interface{}) error
 }
@@ -17,12 +17,12 @@ type RawBytes []byte
 
 var errNilPtr = errors.New("destination pointer is nil") // embedded in descriptive error
 
-// Assign is variation of standard routine from package database/sql
+// ConvertAssign is variation of standard routine from package database/sql
 // convertAssign copies to dest the value in src, converting it if possible.
 // An error is returned if the copy would result in loss of information.
 // dest should be a pointer type.
 
-func Assign(dest, src interface{}) error {
+func ConvertAssign(dest, src interface{}) error {
 	// Common cases, without reflect.
 	switch s := src.(type) {
 	case string:
@@ -278,7 +278,7 @@ func Assign(dest, src interface{}) error {
 	case *RawBytes:
 		sv = reflect.ValueOf(src)
 		if b, ok := asBytes([]byte(*d)[:0], sv); ok {
-			*d = b
+			*d = RawBytes(b)
 			return nil
 		}
 	case *bool:
@@ -331,7 +331,7 @@ func Assign(dest, src interface{}) error {
 			return nil
 		} else {
 			dv.Set(reflect.New(dv.Type().Elem()))
-			return Assign(dv.Interface(), src)
+			return ConvertAssign(dv.Interface(), src)
 		}
 	case reflect.Int, reflect.Int8, reflect.Int16, reflect.Int32, reflect.Int64:
 		s := asString(src)

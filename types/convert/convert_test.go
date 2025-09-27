@@ -1227,20 +1227,20 @@ func TestConvertTo(t *testing.T) {
 	}
 
 	fs := map[string]interface{}{
-		"int":     ToInt,
-		"int8":    ToInt8,
-		"int16":   ToInt16,
-		"int32":   ToInt32,
-		"int64":   ToInt64,
-		"uint":    ToUint,
-		"uint8":   ToUint8,
-		"uint16":  ToUint16,
-		"uint32":  ToUint32,
-		"uint64":  ToUint64,
-		"float32": ToFloat32,
-		"float64": ToFloat64,
-		"bool":    ToBoolean,
-		"string":  ToString,
+		"int":     ConvertToInt,
+		"int8":    ConvertToInt8,
+		"int16":   ConvertToInt16,
+		"int32":   ConvertToInt32,
+		"int64":   ConvertToInt64,
+		"uint":    ConvertToUint,
+		"uint8":   ConvertToUint8,
+		"uint16":  ConvertToUint16,
+		"uint32":  ConvertToUint32,
+		"uint64":  ConvertToUint64,
+		"float32": ConvertToFloat32,
+		"float64": ConvertToFloat64,
+		"bool":    ConvertToBoolean,
+		"string":  ConvertToString,
 	}
 
 	for name, test := range tests {

@@ -1,3 +1,20 @@
+// Copyright 2019 Adverax. All Rights Reserved.
+// This file is part of project
+//
+//      http://github.com/adverax/echo
+//
+// Licensed under the MIT (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//      https://github.com/adverax/echo/blob/master/LICENSE
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
 package convert
 
 import (
@@ -15,7 +32,7 @@ const (
 	DateTimeFormat = "2006-01-02 15:04:05"
 )
 
-func ToString(val interface{}) (res string, valid bool) {
+func ConvertToString(val interface{}) (res string, valid bool) {
 	switch v := val.(type) {
 	case string:
 		return v, true
@@ -60,7 +77,7 @@ func ToString(val interface{}) (res string, valid bool) {
 		return res, err == nil
 	default:
 		var res string
-		err := Assign(&res, v)
+		err := ConvertAssign(&res, v)
 		if err != nil {
 			return "", false
 		}
@@ -68,7 +85,7 @@ func ToString(val interface{}) (res string, valid bool) {
 	}
 }
 
-func ToTime(val interface{}) (res time.Time, valid bool) {
+func ConvertToTime(val interface{}) (res time.Time, valid bool) {
 	switch v := val.(type) {
 	case string:
 		val, err := time.ParseInLocation(DateTimeFormat, v, time.UTC)
@@ -96,7 +113,7 @@ func ToTime(val interface{}) (res time.Time, valid bool) {
 	}
 }
 
-func ToInt(val interface{}) (res int, valid bool) {
+func ConvertToInt(val interface{}) (res int, valid bool) {
 	switch v := val.(type) {
 	case int8:
 		return int(v), true
@@ -145,7 +162,7 @@ func ToInt(val interface{}) (res int, valid bool) {
 		return res, err == nil
 	default:
 		var res int
-		err := Assign(&res, v)
+		err := ConvertAssign(&res, v)
 		if err != nil {
 			return 0, false
 		}
@@ -153,7 +170,7 @@ func ToInt(val interface{}) (res int, valid bool) {
 	}
 }
 
-func ToInt8(val interface{}) (res int8, valid bool) {
+func ConvertToInt8(val interface{}) (res int8, valid bool) {
 	switch v := val.(type) {
 	case int8:
 		return int8(v), true
@@ -202,7 +219,7 @@ func ToInt8(val interface{}) (res int8, valid bool) {
 		return res, err == nil
 	default:
 		var res int8
-		err := Assign(&res, v)
+		err := ConvertAssign(&res, v)
 		if err != nil {
 			return 0, false
 		}
@@ -210,7 +227,7 @@ func ToInt8(val interface{}) (res int8, valid bool) {
 	}
 }
 
-func ToInt16(val interface{}) (res int16, valid bool) {
+func ConvertToInt16(val interface{}) (res int16, valid bool) {
 	switch v := val.(type) {
 	case int8:
 		return int16(v), true
@@ -259,7 +276,7 @@ func ToInt16(val interface{}) (res int16, valid bool) {
 		return res, err == nil
 	default:
 		var res int16
-		err := Assign(&res, v)
+		err := ConvertAssign(&res, v)
 		if err != nil {
 			return 0, false
 		}
@@ -267,7 +284,7 @@ func ToInt16(val interface{}) (res int16, valid bool) {
 	}
 }
 
-func ToInt32(val interface{}) (res int32, valid bool) {
+func ConvertToInt32(val interface{}) (res int32, valid bool) {
 	switch v := val.(type) {
 	case int8:
 		return int32(v), true
@@ -316,7 +333,7 @@ func ToInt32(val interface{}) (res int32, valid bool) {
 		return res, err == nil
 	default:
 		var res int32
-		err := Assign(&res, v)
+		err := ConvertAssign(&res, v)
 		if err != nil {
 			return 0, false
 		}
@@ -324,7 +341,7 @@ func ToInt32(val interface{}) (res int32, valid bool) {
 	}
 }
 
-func ToInt64(val interface{}) (res int64, valid bool) {
+func ConvertToInt64(val interface{}) (res int64, valid bool) {
 	switch v := val.(type) {
 	case int8:
 		return int64(v), true
@@ -375,7 +392,7 @@ func ToInt64(val interface{}) (res int64, valid bool) {
 		return res, err == nil
 	default:
 		var res int64
-		err := Assign(&res, v)
+		err := ConvertAssign(&res, v)
 		if err != nil {
 			return 0, false
 		}
@@ -383,7 +400,7 @@ func ToInt64(val interface{}) (res int64, valid bool) {
 	}
 }
 
-func ToUint(val interface{}) (res uint, valid bool) {
+func ConvertToUint(val interface{}) (res uint, valid bool) {
 	switch v := val.(type) {
 	case int8:
 		return uint(v), true
@@ -432,7 +449,7 @@ func ToUint(val interface{}) (res uint, valid bool) {
 		return res, err == nil
 	default:
 		var res uint
-		err := Assign(&res, v)
+		err := ConvertAssign(&res, v)
 		if err != nil {
 			return 0, false
 		}
@@ -440,7 +457,7 @@ func ToUint(val interface{}) (res uint, valid bool) {
 	}
 }
 
-func ToUint8(val interface{}) (res uint8, valid bool) {
+func ConvertToUint8(val interface{}) (res uint8, valid bool) {
 	switch v := val.(type) {
 	case int8:
 		return uint8(v), true
@@ -489,7 +506,7 @@ func ToUint8(val interface{}) (res uint8, valid bool) {
 		return res, err == nil
 	default:
 		var res uint8
-		err := Assign(&res, v)
+		err := ConvertAssign(&res, v)
 		if err != nil {
 			return 0, false
 		}
@@ -497,7 +514,7 @@ func ToUint8(val interface{}) (res uint8, valid bool) {
 	}
 }
 
-func ToUint16(val interface{}) (res uint16, valid bool) {
+func ConvertToUint16(val interface{}) (res uint16, valid bool) {
 	switch v := val.(type) {
 	case int8:
 		return uint16(v), true
@@ -546,7 +563,7 @@ func ToUint16(val interface{}) (res uint16, valid bool) {
 		return res, err == nil
 	default:
 		var res uint16
-		err := Assign(&res, v)
+		err := ConvertAssign(&res, v)
 		if err != nil {
 			return 0, false
 		}
@@ -554,7 +571,7 @@ func ToUint16(val interface{}) (res uint16, valid bool) {
 	}
 }
 
-func ToUint32(val interface{}) (res uint32, valid bool) {
+func ConvertToUint32(val interface{}) (res uint32, valid bool) {
 	switch v := val.(type) {
 	case int8:
 		return uint32(v), true
@@ -603,7 +620,7 @@ func ToUint32(val interface{}) (res uint32, valid bool) {
 		return res, err == nil
 	default:
 		var res uint32
-		err := Assign(&res, v)
+		err := ConvertAssign(&res, v)
 		if err != nil {
 			return 0, false
 		}
@@ -611,7 +628,7 @@ func ToUint32(val interface{}) (res uint32, valid bool) {
 	}
 }
 
-func ToUint64(val interface{}) (res uint64, valid bool) {
+func ConvertToUint64(val interface{}) (res uint64, valid bool) {
 	switch v := val.(type) {
 	case int8:
 		return uint64(v), true
@@ -662,7 +679,7 @@ func ToUint64(val interface{}) (res uint64, valid bool) {
 		return res, err == nil
 	default:
 		var res uint64
-		err := Assign(&res, v)
+		err := ConvertAssign(&res, v)
 		if err != nil {
 			return 0, false
 		}
@@ -670,7 +687,7 @@ func ToUint64(val interface{}) (res uint64, valid bool) {
 	}
 }
 
-func ToFloat32(val interface{}) (res float32, valid bool) {
+func ConvertToFloat32(val interface{}) (res float32, valid bool) {
 	switch v := val.(type) {
 	case int8:
 		return float32(v), true
@@ -719,7 +736,7 @@ func ToFloat32(val interface{}) (res float32, valid bool) {
 		return res, err == nil
 	default:
 		var res float32
-		err := Assign(&res, v)
+		err := ConvertAssign(&res, v)
 		if err != nil {
 			return 0, false
 		}
@@ -727,7 +744,7 @@ func ToFloat32(val interface{}) (res float32, valid bool) {
 	}
 }
 
-func ToFloat64(val interface{}) (res float64, valid bool) {
+func ConvertToFloat64(val interface{}) (res float64, valid bool) {
 	switch v := val.(type) {
 	case int8:
 		return float64(v), true
@@ -776,7 +793,7 @@ func ToFloat64(val interface{}) (res float64, valid bool) {
 		return res, err == nil
 	default:
 		var res float64
-		err := Assign(&res, v)
+		err := ConvertAssign(&res, v)
 		if err != nil {
 			return 0, false
 		}
@@ -784,7 +801,7 @@ func ToFloat64(val interface{}) (res float64, valid bool) {
 	}
 }
 
-func ToBoolean(val interface{}) (res bool, valid bool) {
+func ConvertToBoolean(val interface{}) (res bool, valid bool) {
 	switch v := val.(type) {
 	case int8:
 		return v != 0, true
@@ -819,7 +836,7 @@ func ToBoolean(val interface{}) (res bool, valid bool) {
 		return res, err == nil
 	default:
 		var res bool
-		err := Assign(&res, v)
+		err := ConvertAssign(&res, v)
 		if err != nil {
 			return false, false
 		}
@@ -827,7 +844,7 @@ func ToBoolean(val interface{}) (res bool, valid bool) {
 	}
 }
 
-func ToDuration(val interface{}) (res time.Duration, valid bool) {
+func ConvertToDuration(val interface{}) (res time.Duration, valid bool) {
 	switch v := val.(type) {
 	case int8:
 		return time.Duration(v), true
@@ -865,7 +882,7 @@ func ToDuration(val interface{}) (res time.Duration, valid bool) {
 		return res, err == nil
 	default:
 		var res time.Duration
-		err := Assign(&res, v)
+		err := ConvertAssign(&res, v)
 		if err != nil {
 			return 0, false
 		}
@@ -873,7 +890,7 @@ func ToDuration(val interface{}) (res time.Duration, valid bool) {
 	}
 }
 
-func ToJson(val interface{}) (res json.RawMessage, valid bool) {
+func ConvertToJson(val interface{}) (res json.RawMessage, valid bool) {
 	switch v := val.(type) {
 	case int8:
 		return json.RawMessage(fmt.Sprintf("%v", v)), true
@@ -944,7 +961,7 @@ func Register(tp reflect.Type, fn func(value interface{}) (reflect.Value, bool))
 	converters[tp] = fn
 }
 
-func To(value interface{}, to reflect.Type) (reflect.Value, bool) {
+func ConvertTo(value interface{}, to reflect.Type) (reflect.Value, bool) {
 	if value == nil {
 		return reflect.Value{}, false
 	}
