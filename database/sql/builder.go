@@ -5,10 +5,10 @@ import (
 	"fmt"
 	"time"
 
+	"github.com/adverax/metacrm.kernel/core"
 	"github.com/jackc/pgx/v5"
 	"github.com/jackc/pgx/v5/pgconn"
 	"github.com/jackc/pgx/v5/pgxpool"
-	"github.com/proxima-research/proxima.crm.kernel/core"
 )
 
 const DatabaseComponentName = "database"

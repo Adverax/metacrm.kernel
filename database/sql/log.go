@@ -7,9 +7,9 @@ import (
 	"strings"
 	"time"
 
+	"github.com/adverax/metacrm.kernel/log"
 	"github.com/jackc/pgx/v5"
 	"github.com/jackc/pgx/v5/pgconn"
-	"github.com/proxima-research/proxima.crm.kernel/log"
 )
 
 type LogOptions struct {

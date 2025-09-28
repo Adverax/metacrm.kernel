@@ -4,7 +4,7 @@ import (
 	"context"
 	"time"
 
-	"github.com/proxima-research/proxima.crm.kernel/enums"
+	"github.com/adverax/metacrm.kernel/enums"
 )
 
 type Level uint8
